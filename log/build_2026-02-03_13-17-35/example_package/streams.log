@@ -1,0 +1,42 @@
+[0.557s] Invoking command in '/home/ray/Desktop/ROS-workshop/src/example-ros-package': PYTHONPATH=/home/ray/Desktop/ROS-workshop/build/example_package/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ray/Desktop/ROS-workshop/install/example_package/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/example_package build --build-base /home/ray/Desktop/ROS-workshop/build/example_package/build install --record /home/ray/Desktop/ROS-workshop/build/example_package/install.log --single-version-externally-managed install_data
+[0.700s] running egg_info
+[0.700s] creating ../../build/example_package/example_package.egg-info
+[0.701s] writing ../../build/example_package/example_package.egg-info/PKG-INFO
+[0.701s] writing dependency_links to ../../build/example_package/example_package.egg-info/dependency_links.txt
+[0.701s] writing entry points to ../../build/example_package/example_package.egg-info/entry_points.txt
+[0.701s] writing requirements to ../../build/example_package/example_package.egg-info/requires.txt
+[0.701s] writing top-level names to ../../build/example_package/example_package.egg-info/top_level.txt
+[0.701s] writing manifest file '../../build/example_package/example_package.egg-info/SOURCES.txt'
+[0.701s] reading manifest file '../../build/example_package/example_package.egg-info/SOURCES.txt'
+[0.702s] writing manifest file '../../build/example_package/example_package.egg-info/SOURCES.txt'
+[0.702s] running build
+[0.702s] running build_py
+[0.702s] creating /home/ray/Desktop/ROS-workshop/build/example_package/build
+[0.702s] creating /home/ray/Desktop/ROS-workshop/build/example_package/build/lib
+[0.702s] creating /home/ray/Desktop/ROS-workshop/build/example_package/build/lib/example_package
+[0.702s] copying example_package/sub_node.py -> /home/ray/Desktop/ROS-workshop/build/example_package/build/lib/example_package
+[0.703s] copying example_package/pub_node.py -> /home/ray/Desktop/ROS-workshop/build/example_package/build/lib/example_package
+[0.703s] copying example_package/__init__.py -> /home/ray/Desktop/ROS-workshop/build/example_package/build/lib/example_package
+[0.703s] running install
+[0.703s] running install_lib
+[0.703s] creating /home/ray/Desktop/ROS-workshop/install/example_package/lib/python3.10/site-packages/example_package
+[0.704s] copying /home/ray/Desktop/ROS-workshop/build/example_package/build/lib/example_package/sub_node.py -> /home/ray/Desktop/ROS-workshop/install/example_package/lib/python3.10/site-packages/example_package
+[0.704s] copying /home/ray/Desktop/ROS-workshop/build/example_package/build/lib/example_package/pub_node.py -> /home/ray/Desktop/ROS-workshop/install/example_package/lib/python3.10/site-packages/example_package
+[0.704s] copying /home/ray/Desktop/ROS-workshop/build/example_package/build/lib/example_package/__init__.py -> /home/ray/Desktop/ROS-workshop/install/example_package/lib/python3.10/site-packages/example_package
+[0.704s] byte-compiling /home/ray/Desktop/ROS-workshop/install/example_package/lib/python3.10/site-packages/example_package/sub_node.py to sub_node.cpython-310.pyc
+[0.704s] byte-compiling /home/ray/Desktop/ROS-workshop/install/example_package/lib/python3.10/site-packages/example_package/pub_node.py to pub_node.cpython-310.pyc
+[0.704s] byte-compiling /home/ray/Desktop/ROS-workshop/install/example_package/lib/python3.10/site-packages/example_package/__init__.py to __init__.cpython-310.pyc
+[0.704s] running install_data
+[0.704s] creating /home/ray/Desktop/ROS-workshop/install/example_package/share/ament_index
+[0.704s] creating /home/ray/Desktop/ROS-workshop/install/example_package/share/ament_index/resource_index
+[0.704s] creating /home/ray/Desktop/ROS-workshop/install/example_package/share/ament_index/resource_index/packages
+[0.704s] copying resource/example_package -> /home/ray/Desktop/ROS-workshop/install/example_package/share/ament_index/resource_index/packages
+[0.704s] copying package.xml -> /home/ray/Desktop/ROS-workshop/install/example_package/share/example_package
+[0.704s] copying launch/both_nodes.launch.py -> /home/ray/Desktop/ROS-workshop/install/example_package/share/example_package
+[0.704s] running install_egg_info
+[0.705s] Copying ../../build/example_package/example_package.egg-info to /home/ray/Desktop/ROS-workshop/install/example_package/lib/python3.10/site-packages/example_package-0.0.0-py3.10.egg-info
+[0.705s] running install_scripts
+[0.718s] Installing pub_node script to /home/ray/Desktop/ROS-workshop/install/example_package/lib/example_package
+[0.718s] Installing sub_node script to /home/ray/Desktop/ROS-workshop/install/example_package/lib/example_package
+[0.719s] writing list of installed files to '/home/ray/Desktop/ROS-workshop/build/example_package/install.log'
+[0.735s] Invoked command in '/home/ray/Desktop/ROS-workshop/src/example-ros-package' returned '0': PYTHONPATH=/home/ray/Desktop/ROS-workshop/build/example_package/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ray/Desktop/ROS-workshop/install/example_package/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/example_package build --build-base /home/ray/Desktop/ROS-workshop/build/example_package/build install --record /home/ray/Desktop/ROS-workshop/build/example_package/install.log --single-version-externally-managed install_data

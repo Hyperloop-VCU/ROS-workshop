@@ -1,0 +1,33 @@
+running egg_info
+creating ../../build/dynamic_transform_example/dynamic_transform_example.egg-info
+writing ../../build/dynamic_transform_example/dynamic_transform_example.egg-info/PKG-INFO
+writing dependency_links to ../../build/dynamic_transform_example/dynamic_transform_example.egg-info/dependency_links.txt
+writing entry points to ../../build/dynamic_transform_example/dynamic_transform_example.egg-info/entry_points.txt
+writing requirements to ../../build/dynamic_transform_example/dynamic_transform_example.egg-info/requires.txt
+writing top-level names to ../../build/dynamic_transform_example/dynamic_transform_example.egg-info/top_level.txt
+writing manifest file '../../build/dynamic_transform_example/dynamic_transform_example.egg-info/SOURCES.txt'
+reading manifest file '../../build/dynamic_transform_example/dynamic_transform_example.egg-info/SOURCES.txt'
+writing manifest file '../../build/dynamic_transform_example/dynamic_transform_example.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/ray/Desktop/ROS-workshop/build/dynamic_transform_example/build
+creating /home/ray/Desktop/ROS-workshop/build/dynamic_transform_example/build/lib
+creating /home/ray/Desktop/ROS-workshop/build/dynamic_transform_example/build/lib/dynamic_transform_example
+copying dynamic_transform_example/main.py -> /home/ray/Desktop/ROS-workshop/build/dynamic_transform_example/build/lib/dynamic_transform_example
+copying dynamic_transform_example/__init__.py -> /home/ray/Desktop/ROS-workshop/build/dynamic_transform_example/build/lib/dynamic_transform_example
+running install
+running install_lib
+creating /home/ray/Desktop/ROS-workshop/install/dynamic_transform_example/lib/python3.10/site-packages/dynamic_transform_example
+copying /home/ray/Desktop/ROS-workshop/build/dynamic_transform_example/build/lib/dynamic_transform_example/main.py -> /home/ray/Desktop/ROS-workshop/install/dynamic_transform_example/lib/python3.10/site-packages/dynamic_transform_example
+copying /home/ray/Desktop/ROS-workshop/build/dynamic_transform_example/build/lib/dynamic_transform_example/__init__.py -> /home/ray/Desktop/ROS-workshop/install/dynamic_transform_example/lib/python3.10/site-packages/dynamic_transform_example
+byte-compiling /home/ray/Desktop/ROS-workshop/install/dynamic_transform_example/lib/python3.10/site-packages/dynamic_transform_example/main.py to main.cpython-310.pyc
+byte-compiling /home/ray/Desktop/ROS-workshop/install/dynamic_transform_example/lib/python3.10/site-packages/dynamic_transform_example/__init__.py to __init__.cpython-310.pyc
+running install_data
+copying package.xml -> /home/ray/Desktop/ROS-workshop/install/dynamic_transform_example/share/dynamic_transform_example
+copying launch/display.launch.py -> /home/ray/Desktop/ROS-workshop/install/dynamic_transform_example/share/dynamic_transform_example
+copying launch/rviz_config.rviz -> /home/ray/Desktop/ROS-workshop/install/dynamic_transform_example/share/dynamic_transform_example
+running install_egg_info
+Copying ../../build/dynamic_transform_example/dynamic_transform_example.egg-info to /home/ray/Desktop/ROS-workshop/install/dynamic_transform_example/lib/python3.10/site-packages/dynamic_transform_example-0.0.0-py3.10.egg-info
+running install_scripts
+Installing dynamic_transform_example script to /home/ray/Desktop/ROS-workshop/install/dynamic_transform_example/lib/dynamic_transform_example
+writing list of installed files to '/home/ray/Desktop/ROS-workshop/build/dynamic_transform_example/install.log'
