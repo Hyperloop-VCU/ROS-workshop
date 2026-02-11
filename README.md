@@ -27,9 +27,8 @@ Be as detailed as possible in the explanations. This should be a written guide t
 ## Resources
 
 Link to VCU Linktree https://www.linkedin.com/company/hyperlabsatvcu
-![octocat](./images/create-octocat.png)
--
-[choose a different Octocat gif from our logo library here](https://octodex.github.com/)
+![PixelatedKush](KushPixelatedHeadshot.png)
+![MeditationKush](KushPixelatedMeditation.png)
 
 ## Workspace Setup
 
