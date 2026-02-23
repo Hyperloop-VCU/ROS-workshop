@@ -17,7 +17,6 @@ setup(
     maintainer_email='rayneralla@icloud.com',
     description='TODO: Package description',
     license='TODO: License declaration',
-    tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             'pub_node = example_package.pub_node:main',
