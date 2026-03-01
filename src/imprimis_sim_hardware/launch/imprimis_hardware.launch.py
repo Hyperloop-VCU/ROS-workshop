@@ -38,6 +38,14 @@ def generate_launch_description():
     )
     declared_arguments.append(
         DeclareLaunchArgument(
+            "show_sim",
+            default_value="false",
+            choices=("true", "false"),
+            description="If true, starts up a window showing the gazebo simulation",
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
             "use_controller",
             default_value="false",
             choices=("true", "false"),
@@ -55,6 +63,7 @@ def generate_launch_description():
     hardware_type = LaunchConfiguration("hardware_type")
     use_controller = LaunchConfiguration("use_controller")
     publish_odom_tf = LaunchConfiguration("publish_odom_tf")
+    show_sim = LaunchConfiguration("show_sim")
 
     # Get URDF via xacro and pass arguments to it
     robot_description_content = Command(
@@ -151,7 +160,7 @@ def generate_launch_description():
         parameters=[{"use_sim_time": PythonExpression(["'", hardware_type, "' == 'simulated'"])}]
     )
 
-    # Gazebo
+    # Gazebo when show_sim is true
     gazebo_launch_include = IncludeLaunchDescription(
             PathJoinSubstitution([
                 FindPackageShare('ros_gz_sim'),
@@ -159,7 +168,17 @@ def generate_launch_description():
                 'gz_sim.launch.py'
             ]),
             launch_arguments={'gz_args': ['-v0 -r ', LaunchConfiguration("world"), '.sdf'], "on_exit_shutdown": "true"}.items(),
-            condition=IfCondition(PythonExpression(["'", hardware_type, "' == 'simulated'"]))
+            condition=IfCondition(PythonExpression(["'", hardware_type, "' == 'simulated' and '", show_sim, "' == 'true'"]))
+    )
+    # Gazebo when show_sim is false
+    gazebo_no_gui_launch_include = IncludeLaunchDescription(
+            PathJoinSubstitution([
+                FindPackageShare('ros_gz_sim'),
+                'launch',
+                'gz_sim.launch.py'
+            ]),
+            launch_arguments={'gz_args': ['--headless-rendering -s -v0 -r ', LaunchConfiguration("world"), '.sdf'], "on_exit_shutdown": "true"}.items(),
+            condition=IfCondition(PythonExpression(["'", hardware_type, "' == 'simulated' and '", show_sim, "' == 'false'"]))
     )
 
     # Spawn imprimis into the gazebo simulation
@@ -248,6 +267,7 @@ def generate_launch_description():
         gz_sim_resource_path,
         old_sim_resource_path,
         gazebo_launch_include,
+        gazebo_no_gui_launch_include,
         gzbridge,
         spawn_imprimis_gazebo,
         gps_republisher,

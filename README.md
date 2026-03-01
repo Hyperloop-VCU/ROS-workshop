@@ -27,8 +27,8 @@ Be as detailed as possible in the explanations. This should be a written guide t
 ## Resources
 
 Link to VCU Linktree https://www.linkedin.com/company/hyperlabsatvcu
-![PixelatedKush](KushPixelatedHeadshot.png)
-![MeditationKush](KushPixelatedMeditation.png)
+![.gh_images/PixelatedKush](KushPixelatedHeadshot.png)
+![.gh_images/MeditationKush](KushPixelatedMeditation.png)
 
 ## Workspace Setup
 
