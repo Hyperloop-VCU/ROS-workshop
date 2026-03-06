@@ -23,7 +23,7 @@ endforeach()
 
 # INSTALL
 install(
-  DIRECTORY launch config worlds meshes
+  DIRECTORY launch config
   DESTINATION share/imprimis_sim_hardware
 )
 
