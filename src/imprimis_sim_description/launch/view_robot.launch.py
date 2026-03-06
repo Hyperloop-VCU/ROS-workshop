@@ -24,7 +24,6 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
     # Declare arguments
     declared_arguments = []
-
     declared_arguments.append(
         DeclareLaunchArgument(
             "description_file",
@@ -32,30 +31,14 @@ def generate_launch_description():
             description="URDF/XACRO description file with the robot.",
         )
     )
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "gui",
-            default_value="true",
-            description="Start Rviz2 and Joint State Publisher gui automatically \
-        with this launch file.",
-        )
-    )
-
-    # Initialize Arguments
-    description_package = LaunchConfiguration("description_package")
     description_file = LaunchConfiguration("description_file")
-    gui = LaunchConfiguration("gui")
 
     # Get URDF via xacro
-    robot_description_content = Command(
-        [
-            PathJoinSubstitution([FindExecutable(name="xacro")]),
-            " ",
-            PathJoinSubstitution(
-                [FindPackageShare("imprimis_sim_description"), "urdf", description_file]
-            ),
-        ]
-    )
+    robot_description_content = Command([
+        PathJoinSubstitution([FindExecutable(name="xacro")]),
+        " ",
+        PathJoinSubstitution([FindPackageShare("imprimis_sim_description"), "urdf", description_file]),
+    ])
 
     robot_description = {"robot_description": robot_description_content}
 
@@ -67,7 +50,6 @@ def generate_launch_description():
     joint_state_publisher_node = Node(
         package="joint_state_publisher_gui",
         executable="joint_state_publisher_gui",
-        condition=IfCondition(gui),
     )
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
@@ -81,7 +63,6 @@ def generate_launch_description():
         name="rviz2",
         output="log",
         arguments=["-d", rviz_config_file],
-        condition=IfCondition(gui),
     )
 
     nodes = [

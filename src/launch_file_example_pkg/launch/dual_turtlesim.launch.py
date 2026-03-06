@@ -6,36 +6,47 @@ from launch.substitutions import PythonExpression
 from launch.substitutions import PathJoinSubstitution, LaunchConfiguration
 from launch_ros.substitutions import FindPackageShare
 
+# This launch file starts up one or two turtlesim nodes and the turtle_teleop_key node required to control them.
+# In this package's config directory, there are two separate config files, one for each turtlesim node.
+
 def generate_launch_description():
 
+    # Create a list of all the launch arguments.
+    # These are options which can be passed to the launch file when you launch it for customization of the launch behavior.
     declared_arguments = []
     declared_arguments.append(
         DeclareLaunchArgument(
             "start_both_nodes",
             default_value="true",
-            description="Should the launch file launch both turtle sim nodes",
+            description="If true, starts up both nodes. If false, only starts one node.",
         )
     )
     launch_both_nodes = LaunchConfiguration("start_both_nodes")
 
+
+    # Retrieve the first turtlesim node's config file
     turtlesim_one_config = PathJoinSubstitution([
         FindPackageShare('launch_file_example_pkg'),
         'config',
         'turtlesim_one_params.yaml'
     ])
-    turtlesim_two_config = PathJoinSubstitution([
-        FindPackageShare('launch_file_example_pkg'),
-        'config',
-        'turtlesim_two_params.yaml'
-    ])
 
- 
+    # Define the first turtlesim node
     turtlesim_node_one = Node(
         package="turtlesim",
         executable="turtlesim_node",
         name="Turtle_1",
         parameters=[turtlesim_one_config]
     )
+
+    # Retrieve the second turtlesim node's config file
+    turtlesim_two_config = PathJoinSubstitution([
+        FindPackageShare('launch_file_example_pkg'),
+        'config',
+        'turtlesim_two_params.yaml'
+    ])
+
+    # Define the second turtlesim node, which only runs if launch_both_nodes is true
     turtlesim_node_two = Node(
         package="turtlesim",
         executable="turtlesim_node",
@@ -43,27 +54,18 @@ def generate_launch_description():
         parameters=[turtlesim_two_config],
         condition=IfCondition(PythonExpression(["'", launch_both_nodes, "'"]))
     )
+
+    # Define the controller node, which controls both turtlesim nodes via the keyboard
     turtlesim_controller = Node(
         package="turtlesim",
         executable="turtle_teleop_key",
         name="Turtle_2"
     )
 
-    launch_arguments = [turtlesim_node_one, turtlesim_node_two, turtlesim_controller]
-
-    return LaunchDescription(declared_arguments + launch_arguments)
-
-###
-# In launch_file_example_pkg, 
-# finish the launch file which starts two turtlesim nodes 
-# at the same time
-
-# The launch file should declare a boolean launch argument 
-# on whether or not to start both turtlesim nodes or just one, 
-# and also passes in a YAML params file to both nodes
-
-# I already created the package skeleton, you need to finish it
-# You can refer to the dynamic_transform_example for the 
-# basic launch file format / syntax, and refer to the launch files 
-# in clearpath_gz/launch/ for examples on how to declare 
-# launch arguments.
+    # Package all nodes into a list and return it, along with all the launch arguments we want to declare.
+    nodes = [
+        turtlesim_node_one, 
+        turtlesim_node_two, 
+        turtlesim_controller
+    ]
+    return LaunchDescription(declared_arguments + nodes)

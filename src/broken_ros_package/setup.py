@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'example_package'
+package_name = 'broken_ros_package'
 
 setup(
     name=package_name,
@@ -19,8 +19,8 @@ setup(
     license='TODO: License declaration',
     entry_points={
         'console_scripts': [
-            'pub_node = example_package.pub_node:main',
-            'sub_node = example_package.sub_node:main',
+            'pub_node = broken_ros_package.pub_node:main',
+            'sub_node = broken_ros_package.sub_node:main',
         ],
     },
 )
