@@ -1,4 +1,5 @@
 # Add the following to ~/.bashrc:
+
 # if [ -f ~/Desktop/ROS-workshop/.workshop_aliases ]; then
 #    . ~/Desktop/ROS-workshop/.workshop_aliases
 # fi
@@ -6,9 +7,11 @@
 # If you change the location of this folder on your computer, you need to change the path in ~/.bashrc as well.
 
 
+# Variables for this script
 WORKSHOP_ALIAS_BASH_SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 BUILD_MSG="Rebuilt the workshop! Apply the changes by running \"reload-workshop\"."
 
+# Alias definitions
 alias cd-workshop='cd $WORKSHOP_ALIAS_BASH_SCRIPT_DIR' 
 alias workshop-code='code $WORKSHOP_ALIAS_BASH_SCRIPT_DIR/src'
 alias rebuild-workshop-full='cd-workshop && rm -rf build install log && rebuild-workshop'
@@ -19,6 +22,8 @@ alias install-workshop-dependencies='rosdep update && rosdep install --from-path
 alias get-new-workshop-code='cd-workshop && clear && git pull && install-workshop-dependencies'
 alias reload-workshop='source $WORKSHOP_ALIAS_BASH_SCRIPT_DIR/install/setup.bash && echo "Loaded the latest workshop build."'
 
+# Commands to run
+source /opt/ros/$ROS_DISTRO/setup.bash
 echo "Loaded ROS."
 reload-workshop
 
