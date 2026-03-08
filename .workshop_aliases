@@ -1,0 +1,18 @@
+# Add the following to ~/.bashrc:
+# if [ -f ~/Desktop/ROS-workshop/.workshop_aliases ]; then
+#    . ~/Desktop/ROS-workshop/.workshop_aliases
+# fi
+
+# If you change the location of this folder on your computer, you need to change the path in ~/.bashrc as well.
+
+
+WORKSHOP_ALIAS_BASH_SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+
+alias workshop='clear && cd $WORKSHOP_ALIAS_BASH_SCRIPT_DIR && source install/setup.bash'
+alias workshop-code='workshop && code src'
+alias reset-workshop-build='clear && cd $WORKSHOP_ALIAS_BASH_SCRIPT_DIR && rm -rf build install log && rebuild-workshop'
+alias reset-workshop-build-safe='clear && cd $WORKSHOP_ALIAS_BASH_SCRIPT_DIR && rm -rf build install log && rebuild-workshop-safe'
+alias rebuild-workshop='clear && cd $WORKSHOP_ALIAS_BASH_SCRIPT_DIR && colcon build && source install/setup.bash'
+alias rebuild-workshop-safe='clear && cd $WORKSHOP_ALIAS_BASH_SCRIPT_DIR && colcon build --executor sequential && source install/setup.bash'
+
+
