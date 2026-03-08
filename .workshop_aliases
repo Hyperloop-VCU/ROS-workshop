@@ -8,6 +8,7 @@
 
 
 # Variables for this script
+ROS_DISTRO_FOUND="$(ls /opt/ros | head -n1)"
 WORKSHOP_ALIAS_BASH_SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 BUILD_MSG="Rebuilt the workshop! Apply the changes by running \"reload-workshop\"."
 
@@ -23,7 +24,6 @@ alias get-new-workshop-code='cd-workshop && clear && git pull && install-worksho
 alias reload-workshop='source $WORKSHOP_ALIAS_BASH_SCRIPT_DIR/install/setup.bash && echo "Loaded the latest workshop build."'
 
 # Commands to run
-source /opt/ros/$ROS_DISTRO/setup.bash
-echo "Loaded ROS."
+source /opt/ros/$ROS_DISTRO_FOUND/setup.bash && echo "Loaded ROS version: $ROS_DISTRO"
 reload-workshop
 
