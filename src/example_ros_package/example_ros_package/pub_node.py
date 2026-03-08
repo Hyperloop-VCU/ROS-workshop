@@ -16,7 +16,7 @@ class MinimalPublisher(Node):
         # The 10 is the queue size, don't worry about it
         self.publisher_ = self.create_publisher(String, 'topic', 10)
 
-        # Initialize timer loop which repeatedly calls self.timer_callback() every 0.2 seconds
+        # Initialize timer to repeatedly calls self.timer_callback() every 0.2 seconds
         timer_period_s = 0.2
         self.timer = self.create_timer(timer_period_s, self.timer_callback)
 

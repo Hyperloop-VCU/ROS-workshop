@@ -9,7 +9,7 @@ setup(
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
-        ('share/' + package_name, ['package.xml', 'launch/dual_turtlesim.launch.py']),
+        ('share/' + package_name, ['package.xml', 'launch/dual_turtlesim.launch.py', 'config/turtlesim_one_params.yaml', 'config/turtlesim_two_params.yaml']),
     ],
     install_requires=['setuptools'],
     zip_safe=True,

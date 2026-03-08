@@ -27,7 +27,6 @@ def generate_launch_description():
     # Retrieve the first turtlesim node's config file
     turtlesim_one_config = PathJoinSubstitution([
         FindPackageShare('launch_file_example_pkg'),
-        'config',
         'turtlesim_one_params.yaml'
     ])
 
@@ -42,7 +41,6 @@ def generate_launch_description():
     # Retrieve the second turtlesim node's config file
     turtlesim_two_config = PathJoinSubstitution([
         FindPackageShare('launch_file_example_pkg'),
-        'config',
         'turtlesim_two_params.yaml'
     ])
 
@@ -59,13 +57,16 @@ def generate_launch_description():
     turtlesim_controller = Node(
         package="turtlesim",
         executable="turtle_teleop_key",
-        name="Turtle_2"
+        name="Turtle_ctrl",
+        prefix='xterm -e'  # This line makes this node start in a new terminal window.
     )
 
-    # Package all nodes into a list and return it, along with all the launch arguments we want to declare.
+    # Group all nodes into a list
     nodes = [
         turtlesim_node_one, 
         turtlesim_node_two, 
         turtlesim_controller
     ]
+
+    # Merge the node list with the argument list and return it for launching
     return LaunchDescription(declared_arguments + nodes)

@@ -7,14 +7,18 @@
 
 
 WORKSHOP_ALIAS_BASH_SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+BUILD_MSG="Rebuilt the workshop! Apply the changes by running \"reload-workshop\"."
 
-alias workshop='cd $WORKSHOP_ALIAS_BASH_SCRIPT_DIR' 
-alias workshop-code='workshop && code src'
-alias reset-workshop-build='workshop && rm -rf build install log && rebuild-workshop'
-alias reset-workshop-build-safe='workshop && rm -rf build install log && rebuild-workshop-safe'
-alias rebuild-workshop='workshop && clear && colcon build && source install/setup.bash'
-alias rebuild-workshop-safe='workshop && clear && colcon build --executor sequential && source install/setup.bash'
+alias cd-workshop='cd $WORKSHOP_ALIAS_BASH_SCRIPT_DIR' 
+alias workshop-code='code $WORKSHOP_ALIAS_BASH_SCRIPT_DIR/src'
+alias rebuild-workshop-full='cd-workshop && rm -rf build install log && rebuild-workshop'
+alias rebuild-workshop-full-safe='cd-workshop && rm -rf build install log && rebuild-workshop-safe'
+alias rebuild-workshop='cd-workshop && clear && colcon build && echo $BUILD_MSG'
+alias rebuild-workshop-safe='cd-workshop && clear && colcon build --executor sequential && echo $BUILD_MSG'
 alias install-workshop-dependencies='rosdep update && rosdep install --from-paths src --ignore-src -r -y'
-alias get-new-workshop-code='workshop && clear && git pull && install-workshop-dependencies'
+alias get-new-workshop-code='cd-workshop && clear && git pull && install-workshop-dependencies'
+alias reload-workshop='source $WORKSHOP_ALIAS_BASH_SCRIPT_DIR/install/setup.bash && echo "Loaded the latest workshop build."'
 
+echo "Loaded ROS."
+reload-workshop
 

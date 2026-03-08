@@ -1,11 +1,18 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Imu
+from time import time_ns
 
 
 class ImuSubscriber(Node):
     def __init__(self):
-        super().__init__('imu_subscriber')
+        # Generate a unique node name based on the time
+        node_name = "basic_subscriber_node_" + str(time_ns())[11:]
+        super().__init__(node_name)
+
+        # Initialize subscriber to receive Imu messages from the topic "imu/data".
+        # Whenever a message is received, self.listener_callback() is called.
+        # 10 is the queue size, don't worry about it.
         self.subscription = self.create_subscription(
             Imu,
             'imu/data',
@@ -26,8 +33,10 @@ class ImuSubscriber(Node):
 
 def main(args=None):
     rclpy.init(args=args)
+
     imu_subscriber = ImuSubscriber()
     rclpy.spin(imu_subscriber)
+
     imu_subscriber.destroy_node()
     rclpy.shutdown()
 
