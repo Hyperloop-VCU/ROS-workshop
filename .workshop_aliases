@@ -4,26 +4,25 @@
 #    . ~/Desktop/ROS-workshop/.workshop_aliases
 # fi
 
-# If you change the location of this folder on your computer, you need to change the path in ~/.bashrc as well.
-
+# Replace the paths with the actual path to this script.
 
 # Variables for this script
-ROS_DISTRO_FOUND="$(ls /opt/ros | head -n1)"
 WORKSHOP_ALIAS_BASH_SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
-BUILD_MSG="Rebuilt the workshop! Apply the changes by running \"reload-workshop\"."
+BUILD_MSG="Rebuilt the workshop! Changes will take effect in this terminal and any new ones you create."
 
-# Alias definitions
+# Alias definitions. These will be used by attendees
 alias cd-workshop='cd $WORKSHOP_ALIAS_BASH_SCRIPT_DIR' 
 alias workshop-code='code $WORKSHOP_ALIAS_BASH_SCRIPT_DIR/src'
 alias rebuild-workshop-full='cd-workshop && rm -rf build install log && rebuild-workshop'
 alias rebuild-workshop-full-safe='cd-workshop && rm -rf build install log && rebuild-workshop-safe'
-alias rebuild-workshop='cd-workshop && clear && colcon build && echo $BUILD_MSG'
-alias rebuild-workshop-safe='cd-workshop && clear && colcon build --executor sequential && echo $BUILD_MSG'
-alias install-workshop-dependencies='rosdep update && rosdep install --from-paths src --ignore-src -r -y'
-alias get-new-workshop-code='cd-workshop && clear && git pull && install-workshop-dependencies'
-alias reload-workshop='source $WORKSHOP_ALIAS_BASH_SCRIPT_DIR/install/setup.bash && echo "Loaded the latest workshop build."'
+alias rebuild-workshop='cd-workshop && clear && colcon build && echo $BUILD_MSG && source-workshop'
+alias rebuild-workshop-safe='cd-workshop && clear && colcon build --executor sequential && echo $BUILD_MSG && source-workshop'
+alias get-new-workshop-code='cd-workshop && clear && git pull && do-rosdep'
 
-# Commands to run
-source /opt/ros/$ROS_DISTRO_FOUND/setup.bash && echo "Loaded ROS version: $ROS_DISTRO"
-reload-workshop
+# More alias definitions. Won't often be used by attendees directly
+alias do-rosdep='cd-workshop && rosdep update --rosdistro humble && rosdep update --rosdistro jazzy && rosdep install --from-paths src --ignore-src -r -y'
+alias source-workshop='source $WORKSHOP_ALIAS_BASH_SCRIPT_DIR/install/setup.bash && echo "Sourced the latest workshop build."'
+
+# Commands to run on startup
+source-workshop
 
