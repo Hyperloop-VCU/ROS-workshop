@@ -17,7 +17,7 @@ class MinimalPublisher(Node):
         self.publisher_ = self.create_publisher(String, 'topic', 10)
 
         # Initialize timer to repeatedly calls self.timer_callback() every 0.2 seconds
-        timer_period_s = 0.2
+        timer_period_s = 3.0
         self.timer = self.create_timer(timer_period_s, self.timer_callback)
 
     def timer_callback(self):
