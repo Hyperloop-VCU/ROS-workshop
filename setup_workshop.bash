@@ -66,7 +66,7 @@ fi" >> ~/.bashrc
 
 # Do rosdep
 echo "Running rosdep."
-rosdep init 2>/dev/null
+rosdep init 
 rosdep update --rosdistro humble
 rosdep update --rosdistro jazzy
 sudo apt update
@@ -74,6 +74,7 @@ rosdep install --from-paths src --ignore-src -r -y
 
 # Initial build
 echo "Building workspace."
+source /opt/ros/$ROS_DISTRO_FOUND/setup.bash
 colcon build && source install/setup.bash
 
 # Done
