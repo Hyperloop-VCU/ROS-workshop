@@ -63,6 +63,8 @@ echo "if [ -f $THIS_SCRIPT_DIR/.workshop_aliases ]; then
    . $THIS_SCRIPT_DIR/.workshop_aliases
 fi" >> ~/.bashrc
 
+# Source ROS
+source /opt/ros/$ROS_DISTRO_FOUND/setup.bash
 
 # Do rosdep
 echo "Running rosdep."
@@ -74,7 +76,6 @@ rosdep install --from-paths src --ignore-src -r -y
 
 # Initial build
 echo "Building workspace."
-source /opt/ros/$ROS_DISTRO_FOUND/setup.bash
 colcon build && source install/setup.bash
 
 # Done
