@@ -69,6 +69,7 @@ echo "Running rosdep."
 rosdep init 2>/dev/null
 rosdep update --rosdistro humble
 rosdep update --rosdistro jazzy
+sudo apt update
 rosdep install --from-paths src --ignore-src -r -y
 
 # Initial build
