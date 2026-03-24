@@ -66,7 +66,7 @@ fi" >> ~/.bashrc
 
 # Do rosdep
 echo "Running rosdep."
-rosdep init 
+sudo rosdep init 
 rosdep update --rosdistro humble
 rosdep update --rosdistro jazzy
 sudo apt update
