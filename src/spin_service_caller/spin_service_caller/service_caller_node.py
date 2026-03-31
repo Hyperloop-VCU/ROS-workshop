@@ -6,12 +6,11 @@ The service you want to call is "spin_service", and it is of type "Empty".
 Read the docs and figure this one out for yourself!
 https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html
 """
-# Hint: the service is not in "example_interfaces", it's in "std_srvs."
 
 
 
 
-# You need to add something here
+from std_srvs.srv import Empty  # Import the service type, it's of type "empty"
 import rclpy
 from rclpy.node import Node
 

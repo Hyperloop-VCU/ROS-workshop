@@ -70,7 +70,6 @@ Do NOT look at the code in this file!
 
 
 
-import sys
 
 from std_srvs.srv import Empty
 import rclpy
@@ -81,19 +80,17 @@ class SpinServiceCaller(Node):
 
     def __init__(self):
         super().__init__('spin_service_caller')
-        self.cli = self.create_client(Empty, 'spin_server')
-        while not self.cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('Service not available. You need to launch imprimis\'s code first. The command is:\nros2 launch imprimis_sim_hardware imprimis_hardware.launch.py')
+        self.get_logger().info("Starting node to call the service 'spin_service' repeatedly.")
+        self.client = self.create_client(Empty, "spin_service")  # ADDITION: create the client that calls the service
         
         timer_period = 0.5
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.numCalls = 0
+        self.timer = self.create_timer(timer_period, self.call_spin_service)
 
-    def send_request(self, a, b):
-        req = Empty.Request()
-        return self.cli.call_async(req)
-    
-    def timer_callback(self):
-        self.send_request()
+    def call_spin_service(self):
+        self.numCalls += 1
+        self.get_logger().info(f"({self.numCalls}) Calling the spin service. The robot should be moving.")
+        self.client.call_async(Empty.Request())  # ADDITION: Call the service with an empty request
 
 
 def main():

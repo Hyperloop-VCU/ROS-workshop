@@ -24,7 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'service_caller_node = spin_service_caller.service_caller_node:main'
+            'service_caller_node = spin_service_caller.service_caller_node:main',
+            'service_caller_solution = spin_service_caller.service_caller_solution:main'
         ],
     },
 )
