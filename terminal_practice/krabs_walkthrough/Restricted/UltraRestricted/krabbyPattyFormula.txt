@@ -1,0 +1,11 @@
+bun
+patty
+cheese
+lettuce
+tomato
+onion
+pickle
+ketchup
+mustard
+bun
+
